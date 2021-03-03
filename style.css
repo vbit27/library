@@ -2,6 +2,49 @@ body {
     background-color: rgb(196, 190, 144);
 }
 
+
+/* TITLE STYLE */
+
+
+.title {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 1rem;
+}
+
+
+.add-book-btn{
+    display: flex;
+    margin: 0 auto;;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: chartreuse;
+    align-self: center;
+    justify-self: center;
+}
+
+.empty-directory {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 5rem;
+    border-radius: 100px;
+    background-color: cornsilk;
+
+}
+
+.empty-directory.hidden {
+    display: none;
+}
+
+
+
+
+/* GRID STYLE */
+
+
+
 .add-input-container {
     position: absolute;
     margin: auto;
@@ -52,39 +95,9 @@ input[type=text] {
 
 
 
-.title {
-    grid-column: 1 / end;
-    font-size: 3rem;
-    margin: 1rem;
-}
-
-
-.add-book-btn{
-    grid-column: 1 / end;
-    font-size: 1rem;
-    padding: 1rem;
-    background-color: chartreuse;
-    align-self: center;
-    justify-self: center;
-}
-
-.empty-directory {
-    grid-column: 1 / end;
-    font-size: 1.5rem;
-    padding: 5rem;
-    border-radius: 100px;
-    background-color: cornsilk;
-
-}
-
-.empty-directory.hidden {
-    display: none;
-}
-
-
 .book-container {
     width: 300px;
     border: 1px solid #000;
-    height: 100px;
+    height: fit-content;
     background-color: white;
 }
