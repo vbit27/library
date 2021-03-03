@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(196, 190, 144);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+    justify-items: stretch;
+    text-align: center;
+    grid-gap: 10px;
+
+}
+
+.title {
+    grid-column: 1 / end;
+    font-size: 3rem;
+    margin: 1rem;
+}
+
+
+.add-book-btn{
+    grid-column: 1 / end;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: chartreuse;
+    align-self: center;
+    justify-self: center;
+}
+
+
+.book-container {
+    width: 300px;
+    border: 1px solid #000;
+    height: 100px;
+    background-color: white;
+}
