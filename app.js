@@ -124,16 +124,18 @@ function removeFromList (e) {
 }
 
 
-/*function toggleStatus(e) {
-  const position = e.target.attributes[1].value;
-  if (myLibrary[position].status == 'true') {
-    console.log(myLibrary[position].status);
-    myLibrary[position].status = 'false';
-  } else {
-    myLibrary[position].status = 'true';
-  } displayBook(myLibrary);
+// Toggle the read status
 
-}*/
+function toggleStatus(e) {
+  const position = e.target.attributes[1].value;
+
+  if (myLibrary[position].status) {
+    myLibrary[position].status = false;
+  } else  myLibrary[position].status = true;
+
+  displayBook(myLibrary);
+
+}
 
 
 
