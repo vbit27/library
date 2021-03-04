@@ -80,9 +80,22 @@ function displayBook(list) {
     bookContainer.appendChild(singleBookContainer);
     
     for (let key in list[i]) {
-      let paragraph = document.createElement('p');
-      paragraph.textContent = list[i][key];
-      singleBookContainer.appendChild(paragraph);
+      if (key == 'status') {
+        const status = document.createElement('button')
+        const statusStage = list[i].status;
+        status.classList.add('read-status');
+        status.setAttribute('data-status', i)
+        if (statusStage) {
+          status.textContent = 'Read';
+        } else {
+          status.textContent = 'Not Read';
+        }  
+        singleBookContainer.appendChild(status);
+        break;
+      }
+        let paragraph = document.createElement('p');
+        paragraph.textContent = list[i][key];
+        singleBookContainer.appendChild(paragraph);
       
     }
       const deleteButton = document.createElement('button');
@@ -111,12 +124,28 @@ function removeFromList (e) {
 }
 
 
+/*function toggleStatus(e) {
+  const position = e.target.attributes[1].value;
+  if (myLibrary[position].status == 'true') {
+    console.log(myLibrary[position].status);
+    myLibrary[position].status = 'false';
+  } else {
+    myLibrary[position].status = 'true';
+  } displayBook(myLibrary);
+
+}*/
+
+
+
+
 
 bookContainer.addEventListener('click', (e) => {
   removeFromList(e);
 });
 
-backdrop.addEventListener('click', (e) => {
-  console.log(e);
-  backdropHandler(e)})
+bookContainer.addEventListener('click', (e) => {
+  toggleStatus(e);
+})
+
+backdrop.addEventListener('click', (e) => {backdropHandler(e)})
 addNewBook.addEventListener('click', addBookToLibraryHandler)
