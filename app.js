@@ -7,6 +7,30 @@ const bookContainer = document.querySelector('.grid-container');
 let myLibrary = [];
 
 
+// Add local memory
+
+
+function getFromLocalMemory () {
+  let originalLibrary = JSON.parse(localStorage.getItem("MyLibrary"))
+    if (originalLibrary) {
+      myLibrary = originalLibrary;
+      displayBook(myLibrary);
+    }
+}
+
+getFromLocalMemory();
+
+
+function setToLocalMemory (lib) {
+  if (lib !== []) {
+    let myLibraryLocal = JSON.stringify(myLibrary);
+    localStorage.setItem("MyLibrary", myLibraryLocal);
+  }
+}
+
+
+
+
 
 // Toggles pop up window
 
@@ -105,7 +129,8 @@ function displayBook(list) {
       singleBookContainer.appendChild(deleteButton);
     
   }
-  
+
+  setToLocalMemory(myLibrary);
 }
 
 
@@ -127,13 +152,17 @@ function removeFromList (e) {
 // Toggle the read status
 
 function toggleStatus(e) {
-  const position = e.target.attributes[1].value;
+  if (e.target.classList.value == 'read-status') {
 
-  if (myLibrary[position].status) {
-    myLibrary[position].status = false;
-  } else  myLibrary[position].status = true;
+    const position = e.target.attributes[1].value;
 
-  displayBook(myLibrary);
+    if (myLibrary[position].status) {
+      myLibrary[position].status = false;
+    } else  myLibrary[position].status = true;
+
+    displayBook(myLibrary);
+
+  } 
 
 }
 
@@ -149,5 +178,5 @@ bookContainer.addEventListener('click', (e) => {
   toggleStatus(e);
 })
 
-backdrop.addEventListener('click', (e) => {backdropHandler(e)})
-addNewBook.addEventListener('click', addBookToLibraryHandler)
+backdrop.addEventListener('click', (e) => {backdropHandler(e)});
+addNewBook.addEventListener('click', addBookToLibraryHandler);
