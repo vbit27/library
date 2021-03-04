@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(196, 190, 144);
+    background-color: #ebfdff;
     margin: 0;
     padding: 0;
 }
@@ -30,20 +30,28 @@ body {
 
 .title {
     display: flex;
+    /*font-family: 'Playfair Display', serif;*/
+    font-family: 'Cormorant Garamond', serif;
     justify-content: center;
-    font-size: 3rem;
-    margin: 1rem;
+    font-size: 12vmin;
+    margin: 2rem;
+    position: relative;
 }
+
 
 
 .add-book-btn{
     display: flex;
     margin: 2rem auto;;
-    font-size: 1rem;
-    padding: 1rem;
-    background-color: chartreuse;
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+    color: white;
+    background-color: #3a9052;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 0.05rem;
     align-self: center;
     justify-self: center;
+    border: none;
 }
 
 
@@ -126,8 +134,10 @@ input[type=text] {
 
 
 
+
 .book-container {
-    width: 300px;
+    width: fit-content;
+    padding: 3em;
     border: 1px solid #000;
     height: fit-content;
     background-color: white;
