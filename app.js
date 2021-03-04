@@ -1,7 +1,7 @@
+const backdrop = document.querySelector('.backdrop');
 const addNewBook = document.querySelector('.add-book-btn');
 const addInputContainer = document.querySelector('.add-input-container');
 const bookContainer = document.querySelector('.grid-container');
-const deleteButtonElements = document.querySelectorAll('.delete-button');
 
 
 let myLibrary = [];
@@ -12,6 +12,17 @@ let myLibrary = [];
 
 function toggleWindow () {
   addInputContainer.classList.toggle('visible');
+  greyBackdrop();
+}
+
+function greyBackdrop() { 
+  backdrop.classList.toggle('visible');
+}
+
+function backdropHandler(e) {
+  if (e.target.className === 'backdrop visible') {
+    toggleWindow();
+  }
 }
   
 // Object Contructor
@@ -66,7 +77,6 @@ function displayBook(list) {
     let singleBookContainer = document.createElement('div');
     
     singleBookContainer.classList.add('book-container');
-    singleBookContainer.setAttribute('data-position', `${i}`);
     bookContainer.appendChild(singleBookContainer);
     
     for (let key in list[i]) {
@@ -86,7 +96,7 @@ function displayBook(list) {
 }
 
 
-// GET THE CLASS NUMBER SO YOU CAN USE IT ON THE ARRAY!!!!!!!!  EVent Delegation!!
+// Removes the single book card
 
 function removeFromList (e) {
 
@@ -106,5 +116,7 @@ bookContainer.addEventListener('click', (e) => {
   removeFromList(e);
 });
 
-
+backdrop.addEventListener('click', (e) => {
+  console.log(e);
+  backdropHandler(e)})
 addNewBook.addEventListener('click', addBookToLibraryHandler)

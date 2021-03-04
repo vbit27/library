@@ -1,7 +1,27 @@
 body {
     background-color: rgb(196, 190, 144);
+    margin: 0;
+    padding: 0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+.backdrop {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: rgba(143, 143, 143, 0.678);
+    display: none;
+    z-index: 0;
+
+}
+
+.backdrop.visible {
+    display: block;
+}
 
 /* TITLE STYLE */
 
@@ -62,6 +82,7 @@ body {
     padding: 1rem;
     border-radius: 10%;
     display: none;
+    z-index: 1;
 }
 
 .add-input-container.visible {
