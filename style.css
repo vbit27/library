@@ -6,6 +6,11 @@ body {
 
 * {
     box-sizing: border-box;
+
+}
+
+button {
+    cursor: pointer;
 }
 
 .backdrop {
@@ -36,6 +41,7 @@ body {
     font-size: 12vmin;
     margin: 2rem 2rem 0 2rem;
     position: relative;
+    color: #2f2e41;
 }
 
 
@@ -52,6 +58,16 @@ body {
     align-self: center;
     justify-self: center;
     border: none;
+    transition: all 0.3s ease 0s;
+}
+
+.add-book-btn:hover {
+    background-color: #ebfdff;
+    color: #3a9052;
+    /*border: 1px solid #3a9052;
+    box-sizing: border-box;*/
+    outline: 1px solid #3a9052;
+    outline-offset: -1px;
 }
 
 
@@ -73,7 +89,7 @@ img {
 
 .empty-directory p {
     font-size: 1.4rem;
-    color: rgb(48, 49, 49);
+    color: rgb(63, 63, 63);
     letter-spacing: 0.05rem;
 }
 
