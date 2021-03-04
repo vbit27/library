@@ -1,7 +1,7 @@
 const backdrop = document.querySelector('.backdrop');
 const addNewBook = document.querySelector('.add-book-btn');
 const addInputContainer = document.querySelector('.add-input-container');
-const bookContainer = document.querySelector('.grid-container');
+const gridContainer = document.querySelector('.grid-container');
 
 
 let myLibrary = [];
@@ -31,7 +31,6 @@ function setToLocalMemory (lib) {
 
 
 
-
 // Toggles pop up window
 
 function toggleWindow () {
@@ -47,6 +46,21 @@ function backdropHandler(e) {
   if (e.target.className === 'backdrop visible') {
     toggleWindow();
   }
+}
+
+
+// Toggle empty directory message
+
+function toggleEmptyDirectory() {
+  const emptyDirectory = document.querySelector('.empty-directory')
+
+  if (gridContainer.hasChildNodes()) {
+    emptyDirectory.classList.add('hide');
+  } else if (!gridContainer.hasChildNodes()) {
+    emptyDirectory.classList.remove('hide');
+  }
+
+  
 }
   
 // Object Contructor
@@ -94,14 +108,14 @@ function confirmAddBook() {
 
 
 function displayBook(list) {
-  bookContainer.innerHTML = '';
+  gridContainer.innerHTML = '';
 
 
   for(let i = 0; i <= list.length - 1; i++) {
-    let singleBookContainer = document.createElement('div');
+    let singlegridContainer = document.createElement('div');
     
-    singleBookContainer.classList.add('book-container');
-    bookContainer.appendChild(singleBookContainer);
+    singlegridContainer.classList.add('book-container');
+    gridContainer.appendChild(singlegridContainer);
     
     for (let key in list[i]) {
       if (key == 'status') {
@@ -114,23 +128,25 @@ function displayBook(list) {
         } else {
           status.textContent = 'Not Read';
         }  
-        singleBookContainer.appendChild(status);
+        singlegridContainer.appendChild(status);
         break;
       }
         let paragraph = document.createElement('p');
         paragraph.textContent = list[i][key];
-        singleBookContainer.appendChild(paragraph);
+        singlegridContainer.appendChild(paragraph);
       
     }
       const deleteButton = document.createElement('button');
       deleteButton.textContent = 'Delete';
       deleteButton.setAttribute('id', i);
       deleteButton.classList.add('delete-button');
-      singleBookContainer.appendChild(deleteButton);
+      singlegridContainer.appendChild(deleteButton);
     
   }
 
   setToLocalMemory(myLibrary);
+  toggleEmptyDirectory()
+
 }
 
 
@@ -141,7 +157,7 @@ function removeFromList (e) {
   if (e.target.classList.value === 'delete-button') {
     let num = e.target.id;
     myLibrary.splice(num, 1);
-    bookContainer.innerHTML = '';
+    gridContainer.innerHTML = '';
 
     displayBook(myLibrary);
 
@@ -170,11 +186,11 @@ function toggleStatus(e) {
 
 
 
-bookContainer.addEventListener('click', (e) => {
+gridContainer.addEventListener('click', (e) => {
   removeFromList(e);
 });
 
-bookContainer.addEventListener('click', (e) => {
+gridContainer.addEventListener('click', (e) => {
   toggleStatus(e);
 })
 
