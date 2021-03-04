@@ -59,10 +59,9 @@ function toggleEmptyDirectory() {
   } else if (!gridContainer.hasChildNodes()) {
     emptyDirectory.classList.remove('hide');
   }
-
-  
 }
   
+
 // Object Contructor
 
 function Book(title, author, pages, status) {
