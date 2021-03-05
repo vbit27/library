@@ -226,6 +226,7 @@ input:focus {
     letter-spacing: 0.05rem;
     align-self: center;
     justify-self: center;
+    width: 60%;
     border: none;
     transition: all 0.3s ease 0s;
 
@@ -288,7 +289,11 @@ input:focus {
     background-color: #e8f1ea;
     color: #3a9052;
     letter-spacing: 0.09rem;
+    transition: all 0.3s ease 0s;
+}
 
+.read-status:hover {
+    border: 1px solid #3a9052;
 }
 
 .delete-button {
@@ -309,6 +314,12 @@ input:focus {
     color: red;
 }
 
+@media only screen and (max-width: 1200px) { 
+    .input-button-container button {
+        width: 100%;
+    }
+}
+
 
 @media only screen and (max-width: 750px) {
     img {
@@ -317,8 +328,10 @@ input:focus {
         height: auto;    
     }
 
+    
+
     .pop-up-container {
         width: 100%;
         margin: auto 0;
     }
-  }
+}
