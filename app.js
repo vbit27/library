@@ -35,6 +35,7 @@ function setToLocalMemory (lib) {
 
 function toggleWindow () {
   popUpContainer.classList.toggle('visible');
+  clear();
   greyBackdrop();
 }
 

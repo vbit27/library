@@ -100,7 +100,7 @@ button {
 
 .add-book-btn{
     display: flex;
-    margin: 2rem auto ;
+    margin: 2rem auto 4rem auto;
     font-size: 1.1rem;
     padding: 1rem 1.5rem;
     color: white;
@@ -257,17 +257,56 @@ input:focus {
 }
 
 
-
-
 .book-container {
     display: grid;
-    grid-template-rows: 1.5fr 1fr 1fr 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr 1fr;
+    row-gap: 20px;
     width: 100%;
     align-self: stretch;
     padding: 3em;
     min-height: 40vh;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05rem;
     background-color: white;
     box-shadow: 5px 5px 20px #d2eef0;
+    transition: all 0.3s ease 0s;
+}
+
+.book-container:hover {
+    transform: scale(1.03);
+
+}
+
+.read-status {
+    width: 60%;
+    margin: 0 auto;
+    padding: 1em 0;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    background-color: #e8f1ea;
+    color: #3a9052;
+    letter-spacing: 0.09rem;
+
+}
+
+.delete-button {
+    width: 60%;
+    margin: 0 auto;
+    padding: 1em 0;
+    border-radius: 30px;
+    border: 1px solid rgb(255, 219, 219);
+    background-color: #ffffff;
+    color: rgb(255, 168, 168);
+    letter-spacing: 0.09rem;
+    outline:none;
+    transition: all 0.3s ease 0s;
+}
+
+.delete-button:hover {
+    border: 1px solid red;
+    color: red;
 }
 
 
