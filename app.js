@@ -1,6 +1,6 @@
 const backdrop = document.querySelector('.backdrop');
 const addNewBook = document.querySelector('.add-book-btn');
-const addInputContainer = document.querySelector('.add-input-container');
+const popUpContainer = document.querySelector('.pop-up-container');
 const gridContainer = document.querySelector('.grid-container');
 
 
@@ -34,7 +34,7 @@ function setToLocalMemory (lib) {
 // Toggles pop up window
 
 function toggleWindow () {
-  addInputContainer.classList.toggle('visible');
+  popUpContainer.classList.toggle('visible');
   greyBackdrop();
 }
 

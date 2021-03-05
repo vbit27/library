@@ -48,8 +48,7 @@ table {
 }
 
 
-
-/*WEBSITE STYLE*/
+/* ///// WEBSITE STYLE ////// */
 
 
 
@@ -153,28 +152,38 @@ img {
 
 /* Input window style */
 
-
-
-.add-input-container {
+.pop-up-container {
     position: absolute;
     margin: auto;
     top: 0; left: 0; bottom: 0; right: 0;
+    width: 40vw;
+    height: 60vh;
+    z-index: 1;
+    display: none;
+
+
+
+
+}
+
+.add-input-container {
+    
     background-color: #ffffff;
     font-size: 1.5rem;
-    max-width: 40%;
-    min-width: 400px;
-    height: fit-content;
+   
+    width: 100%;    
     justify-content: stretch;
     align-content: center;
     row-gap: 1rem;
-    padding: 1rem;
-    display: none;
+    padding: 2rem;
     box-shadow: 5px 5px 20px #d2eef0;
     z-index: 1;
+    display: grid;
+
 }
 
-.add-input-container.visible {
-    display: grid;
+.pop-up-container.visible {
+    display: block;
 }
 
 
@@ -196,18 +205,23 @@ input:focus {
     border: 1px solid #3a905271;
 }
 
+#read-status {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
 .input-button-container {
     display: grid;
-    justify-content: center;
+    justify-content: stretch;
     align-content: center;
-    grid-template-columns: 1.5fr 2fr 2fr;
+    grid-template-columns: 1fr 1fr;
     column-gap: 1rem;
     margin: 1rem;
 }
 
 .input-button-container button {
-    display: flex;
-    margin: 2rem auto ;
     font-size: 1.1rem;
     padding: 1rem 1.5rem;
     color: white;
@@ -225,6 +239,12 @@ input:focus {
     background-color: #ffffff;
     color: #3a9052;
     outline: 1px solid #3a9052;
+    outline-offset: -1px;
+}
+
+#cancel-submit:hover {
+    outline: 1px solid crimson;
+    color: crimson;
     outline-offset: -1px;
 }
 
@@ -257,5 +277,10 @@ input:focus {
         width: 100%;
         max-width:100%;
         height: auto;    
+    }
+
+    .pop-up-container {
+        width: 100%;
+        margin: auto 0;
     }
   }
