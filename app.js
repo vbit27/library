@@ -101,10 +101,18 @@ function confirmAddBook() {
     myLibrary.push(newBook);
     displayBook(myLibrary);
     toggleWindow();
+    clear();
 
   } else return alert('Please add all the information');
 } 
 
+
+function clear() {
+  document.getElementById('book-title').value = '';
+  document.getElementById('book-author').value = '';
+  document.getElementById('book-pages').value = '';
+  document.getElementById('book-read').checked = false;
+}
 
 // Displays the added book on the screen
 
