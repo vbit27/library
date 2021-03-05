@@ -107,6 +107,7 @@ function confirmAddBook() {
   } else return alert('Please add all the information');
 } 
 
+// Clear input field 
 
 function clear() {
   document.getElementById('book-title').value = '';
@@ -192,8 +193,6 @@ function toggleStatus(e) {
   } 
 
 }
-
-
 
 
 
