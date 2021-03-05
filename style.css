@@ -160,10 +160,6 @@ img {
     height: 60vh;
     z-index: 1;
     display: none;
-
-
-
-
 }
 
 .add-input-container {
@@ -248,27 +244,30 @@ input:focus {
     outline-offset: -1px;
 }
 
-/* Grid of all books */
+/* Grid of books */
 
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fit, minmax(30ch, 40ch));
     justify-content: center;
     justify-items: stretch;
     text-align: center;
-    grid-gap: 10px;
+    grid-gap: 40px;
 }
 
 
 
 
 .book-container {
-    width: fit-content;
+    display: grid;
+    grid-template-rows: 1.5fr 1fr 1fr 0.5fr 0.5fr;
+    width: 100%;
+    align-self: stretch;
     padding: 3em;
-    border: 1px solid #000;
-    height: fit-content;
+    min-height: 40vh;
     background-color: white;
+    box-shadow: 5px 5px 20px #d2eef0;
 }
 
 

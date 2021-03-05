@@ -93,13 +93,16 @@ function confirmAddBook() {
   const pages = document.getElementById('book-pages').value;
   const read = document.getElementById('book-read').checked;
 
-  let newBook = new Book(title, author, pages, read)  
+  if (title && author && pages) {
+
+    let newBook = new Book(title, author, pages, read);  
 
 
-  myLibrary.push(newBook)
-  displayBook(myLibrary);
+    myLibrary.push(newBook);
+    displayBook(myLibrary);
+    toggleWindow();
 
-  toggleWindow();
+  } else return alert('Please add all the information');
 } 
 
 
