@@ -3,43 +3,36 @@ const addNewBook = document.querySelector('.add-book-btn');
 const popUpContainer = document.querySelector('.pop-up-container');
 const gridContainer = document.querySelector('.grid-container');
 
-
 let myLibrary = [];
-
 
 // Add local memory
 
-
-function getFromLocalMemory () {
-  let originalLibrary = JSON.parse(localStorage.getItem("MyLibrary"))
-    if (originalLibrary) {
-      myLibrary = originalLibrary;
-      displayBook(myLibrary);
-    }
+function getFromLocalMemory() {
+  let originalLibrary = JSON.parse(localStorage.getItem('MyLibrary'));
+  if (originalLibrary) {
+    myLibrary = originalLibrary;
+    displayBook(myLibrary);
+  }
 }
 
 getFromLocalMemory();
 
-
-function setToLocalMemory (lib) {
+function setToLocalMemory(lib) {
   if (lib !== []) {
     let myLibraryLocal = JSON.stringify(myLibrary);
-    localStorage.setItem("MyLibrary", myLibraryLocal);
+    localStorage.setItem('MyLibrary', myLibraryLocal);
   }
 }
 
-
-
-
 // Toggles pop up window
 
-function toggleWindow () {
+function toggleWindow() {
   popUpContainer.classList.toggle('visible');
   clear();
   greyBackdrop();
 }
 
-function greyBackdrop() { 
+function greyBackdrop() {
   backdrop.classList.toggle('visible');
 }
 
@@ -49,11 +42,10 @@ function backdropHandler(e) {
   }
 }
 
-
 // Toggle empty directory message
 
 function toggleEmptyDirectory() {
-  const emptyDirectory = document.querySelector('.empty-directory')
+  const emptyDirectory = document.querySelector('.empty-directory');
 
   if (gridContainer.hasChildNodes()) {
     emptyDirectory.classList.add('hide');
@@ -61,11 +53,10 @@ function toggleEmptyDirectory() {
     emptyDirectory.classList.remove('hide');
   }
 }
-  
 
 // Object Contructor
 
-class Book{
+class Book {
   constructor(title, author, pages, status) {
     this.title = title;
     this.author = author;
@@ -73,7 +64,6 @@ class Book{
     this.status = status;
   }
 }
-
 
 // Operates pop up windows buttons
 
@@ -83,10 +73,9 @@ function addBookToLibraryHandler() {
 
   toggleWindow();
 
-  submit.addEventListener('click', confirmAddBook)  
+  submit.addEventListener('click', confirmAddBook);
   cancelSubmit.addEventListener('click', toggleWindow);
 }
-
 
 // Adds a book inside myList array
 
@@ -97,19 +86,16 @@ function confirmAddBook() {
   const read = document.getElementById('book-read').checked;
 
   if (title && author && pages) {
-
-    let newBook = new Book(title, author, pages, read);  
-
+    let newBook = new Book(title, author, pages, read);
 
     myLibrary.push(newBook);
     displayBook(myLibrary);
     toggleWindow();
     clear();
-
   } else return alert('Please add all the information');
-} 
+}
 
-// Clear input field 
+// Clear input field
 
 function clear() {
   document.getElementById('book-title').value = '';
@@ -120,83 +106,69 @@ function clear() {
 
 // Displays the added book on the screen
 
-
 function displayBook(list) {
   gridContainer.innerHTML = '';
 
-
-  for(let i = 0; i <= list.length - 1; i++) {
+  for (let i = 0; i <= list.length - 1; i++) {
     let singlegridContainer = document.createElement('div');
-    
+
     singlegridContainer.classList.add('book-container');
     gridContainer.appendChild(singlegridContainer);
-    
+
     for (let key in list[i]) {
       if (key == 'status') {
-        const status = document.createElement('button')
+        const status = document.createElement('button');
         const statusStage = list[i].status;
         status.classList.add('read-status');
-        status.setAttribute('data-status', i)
+        status.setAttribute('data-status', i);
         if (statusStage) {
           status.textContent = 'Read';
         } else {
           status.textContent = 'Not Read';
-        }  
+        }
         singlegridContainer.appendChild(status);
         break;
       }
-        let paragraph = document.createElement('p');
-        paragraph.textContent = list[i][key];
-        singlegridContainer.appendChild(paragraph);
-      
+      let paragraph = document.createElement('p');
+      paragraph.textContent = list[i][key];
+      singlegridContainer.appendChild(paragraph);
     }
-      const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Delete';
-      deleteButton.setAttribute('id', i);
-      deleteButton.classList.add('delete-button');
-      singlegridContainer.appendChild(deleteButton);
-    
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.setAttribute('id', i);
+    deleteButton.classList.add('delete-button');
+    singlegridContainer.appendChild(deleteButton);
   }
 
   setToLocalMemory(myLibrary);
-  toggleEmptyDirectory()
-
+  toggleEmptyDirectory();
 }
-
 
 // Removes the single book card
 
-function removeFromList (e) {
-
+function removeFromList(e) {
   if (e.target.classList.value === 'delete-button') {
     let num = e.target.id;
     myLibrary.splice(num, 1);
     gridContainer.innerHTML = '';
 
     displayBook(myLibrary);
-
   }
 }
-
 
 // Toggle the read status
 
 function toggleStatus(e) {
   if (e.target.classList.value == 'read-status') {
-
     const position = e.target.attributes[1].value;
 
     if (myLibrary[position].status) {
       myLibrary[position].status = false;
-    } else  myLibrary[position].status = true;
+    } else myLibrary[position].status = true;
 
     displayBook(myLibrary);
-
-  } 
-
+  }
 }
-
-
 
 gridContainer.addEventListener('click', (e) => {
   removeFromList(e);
@@ -204,7 +176,9 @@ gridContainer.addEventListener('click', (e) => {
 
 gridContainer.addEventListener('click', (e) => {
   toggleStatus(e);
-})
+});
 
-backdrop.addEventListener('click', (e) => {backdropHandler(e)});
+backdrop.addEventListener('click', (e) => {
+  backdropHandler(e);
+});
 addNewBook.addEventListener('click', addBookToLibraryHandler);
