@@ -65,11 +65,13 @@ function toggleEmptyDirectory() {
 
 // Object Contructor
 
-function Book(title, author, pages, status) {
+class Book{
+  constructor(title, author, pages, status) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.status = status;
+  }
 }
 
 
