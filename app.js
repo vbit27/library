@@ -15,6 +15,8 @@ function getFromLocalMemory() {
   }
 }
 
+const firebase = 0;
+
 getFromLocalMemory();
 
 function setToLocalMemory(lib) {
