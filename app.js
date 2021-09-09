@@ -5,7 +5,21 @@ const gridContainer = document.querySelector('.grid-container');
 
 let myLibrary = [];
 
-// Add local memory
+var firebaseConfig = {
+  apiKey: 'AIzaSyDI2RYWRZm4rqdnvKidAxBXkyj-No6EWks',
+  authDomain: 'library2-3f01c.firebaseapp.com',
+  projectId: 'library2-3f01c',
+  storageBucket: 'library2-3f01c.appspot.com',
+  messagingSenderId: '683173299354',
+  appId: '1:683173299354:web:00afec5002ddb868e20b23',
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig) {
+
+
+};
+
+/* Add local memory
 
 function getFromLocalMemory() {
   let originalLibrary = JSON.parse(localStorage.getItem('MyLibrary'));
@@ -23,6 +37,7 @@ function setToLocalMemory(lib) {
     localStorage.setItem('MyLibrary', myLibraryLocal);
   }
 }
+*/
 
 // Toggles pop up window
 
